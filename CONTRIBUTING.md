@@ -29,10 +29,10 @@ In a nutshell, modules are at varying levels of API stability.  Bug fixes are
 always welcome but API or behavioral  changes to modules at stability level 3
 and up are off-limits.
 
-Node.js has several bundled dependencies in the deps/ directory that are not
-part of the project proper.  Any changes to files in that directory or its
-subdirectories should be sent to their respective projects.  Do not send
-that patch to us, we cannot accept it.
+Node.js has several bundled dependencies in the deps/ and the tools/
+directories that are not part of the project proper.  Any changes to files
+in those directories or its subdirectories should be sent to their respective
+projects.  Do not send your patch to us, we cannot accept it.
 
 In case of doubt, open an issue in the [issue tracker][], post your question
 to the [node.js mailing list][] or contact one of the [project maintainers][]
@@ -49,10 +49,10 @@ Okay, so you have decided on the proper branch.  Create a feature branch
 and start hacking:
 
 ```
-$ git checkout -b my-feature-branch -t origin/v0.8
+$ git checkout -b my-feature-branch -t origin/v0.10
 ```
 
-(Where v0.8 is the latest stable branch as of this writing.)
+(Where v0.10 is the latest stable branch as of this writing.)
 
 
 ### COMMIT
@@ -68,14 +68,15 @@ Writing good commit logs is important.  A commit log should describe what
 changed and why.  Follow these guidelines when writing one:
 
 1. The first line should be 50 characters or less and contain a short
-   description of the change.
+   description of the change prefixed with the name of the changed
+   subsystem (e.g. "net: add localAddress and localPort to Socket").
 2. Keep the second line blank.
 3. Wrap all other lines at 72 columns.
 
 A good commit log looks like this:
 
 ```
-Header line: explaining the commit in one line
+subsystem: explaining the commit in one line
 
 Body of commit message is a few lines of text, explaining things
 in more detail, possibly giving some background about the issue
@@ -99,7 +100,7 @@ Use `git rebase` (not `git merge`) to sync your work from time to time.
 
 ```
 $ git fetch upstream
-$ git rebase upstream/v0.8  # or upstream/master
+$ git rebase upstream/v0.10  # or upstream/master
 ```
 
 

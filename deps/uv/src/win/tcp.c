@@ -82,7 +82,7 @@ static int uv__tcp_keepalive(uv_tcp_t* handle, SOCKET socket, int enable, unsign
 
 
 static int uv_tcp_set_socket(uv_loop_t* loop, uv_tcp_t* handle,
-    SOCKET socket, int imported) {
+    SOCKET socket, int family, int imported) {
   DWORD yes = 1;
   int non_ifs_lsp;
 
@@ -108,10 +108,14 @@ static int uv_tcp_set_socket(uv_loop_t* loop, uv_tcp_t* handle,
     }
   }
 
-  non_ifs_lsp = (handle->flags & UV_HANDLE_IPV6) ? uv_tcp_non_ifs_lsp_ipv6 :
-    uv_tcp_non_ifs_lsp_ipv4;
+  if (family == AF_INET6) {
+    non_ifs_lsp = uv_tcp_non_ifs_lsp_ipv6;
+  } else {
+    non_ifs_lsp = uv_tcp_non_ifs_lsp_ipv4;
+  }
 
-  if (pSetFileCompletionNotificationModes && !non_ifs_lsp) {
+  if (pSetFileCompletionNotificationModes &&
+      !(handle->flags & UV_HANDLE_EMULATE_IOCP) && !non_ifs_lsp) {
     if (pSetFileCompletionNotificationModes((HANDLE) socket,
         FILE_SKIP_SET_EVENT_ON_HANDLE |
         FILE_SKIP_COMPLETION_PORT_ON_SUCCESS)) {
@@ -135,6 +139,12 @@ static int uv_tcp_set_socket(uv_loop_t* loop, uv_tcp_t* handle,
 
   handle->socket = socket;
 
+  if (family == AF_INET6) {
+    handle->flags |= UV_HANDLE_IPV6;
+  } else {
+    assert(!(handle->flags & UV_HANDLE_IPV6));
+  }
+
   return 0;
 }
 
@@ -150,15 +160,12 @@ int uv_tcp_init(uv_loop_t* loop, uv_tcp_t* handle) {
   handle->func_connectex = NULL;
   handle->processed_accepts = 0;
 
-  loop->counters.tcp_init++;
-
   return 0;
 }
 
 
 void uv_tcp_endgame(uv_loop_t* loop, uv_tcp_t* handle) {
   int status;
-  int sys_error;
   unsigned int i;
   uv_tcp_accept_t* req;
 
@@ -168,21 +175,17 @@ void uv_tcp_endgame(uv_loop_t* loop, uv_tcp_t* handle) {
 
     UNREGISTER_HANDLE_REQ(loop, handle, handle->shutdown_req);
 
-    if (handle->flags & UV_HANDLE_CLOSING) {
+    if (handle->flags & UV__HANDLE_CLOSING) {
       status = -1;
-      sys_error = WSAEINTR;
+      uv__set_artificial_error(loop, UV_ECANCELED);
     } else if (shutdown(handle->socket, SD_SEND) != SOCKET_ERROR) {
       status = 0;
-      handle->flags |= UV_HANDLE_SHUT;
     } else {
       status = -1;
-      sys_error = WSAGetLastError();
+      uv__set_sys_error(loop, WSAGetLastError());
     }
 
     if (handle->shutdown_req->cb) {
-      if (status == -1) {
-        uv__set_sys_error(loop, sys_error);
-      }
       handle->shutdown_req->cb(handle->shutdown_req, status);
     }
 
@@ -191,10 +194,9 @@ void uv_tcp_endgame(uv_loop_t* loop, uv_tcp_t* handle) {
     return;
   }
 
-  if (handle->flags & UV_HANDLE_CLOSING &&
+  if (handle->flags & UV__HANDLE_CLOSING &&
       handle->reqs_pending == 0) {
     assert(!(handle->flags & UV_HANDLE_CLOSED));
-    uv__handle_stop(handle);
 
     if (!(handle->flags & UV_HANDLE_TCP_SOCKET_CLOSED)) {
       closesocket(handle->socket);
@@ -239,14 +241,14 @@ void uv_tcp_endgame(uv_loop_t* loop, uv_tcp_t* handle) {
 
 
 static int uv__bind(uv_tcp_t* handle,
-                    int domain,
+                    int family,
                     struct sockaddr* addr,
                     int addrsize) {
   DWORD err;
   int r;
 
   if (handle->socket == INVALID_SOCKET) {
-    SOCKET sock = socket(domain, SOCK_STREAM, 0);
+    SOCKET sock = socket(family, SOCK_STREAM, 0);
     if (sock == INVALID_SOCKET) {
       uv__set_sys_error(handle->loop, WSAGetLastError());
       return -1;
@@ -259,7 +261,7 @@ static int uv__bind(uv_tcp_t* handle,
       return -1;
     }
 
-    if (uv_tcp_set_socket(handle->loop, handle, sock, 0) == -1) {
+    if (uv_tcp_set_socket(handle->loop, handle, sock, family, 0) < 0) {
       closesocket(sock);
       return -1;
     }
@@ -294,17 +296,10 @@ int uv__tcp_bind(uv_tcp_t* handle, struct sockaddr_in addr) {
 
 
 int uv__tcp_bind6(uv_tcp_t* handle, struct sockaddr_in6 addr) {
-  if (uv_allow_ipv6) {
-    handle->flags |= UV_HANDLE_IPV6;
-    return uv__bind(handle,
-                    AF_INET6,
-                    (struct sockaddr*)&addr,
-                    sizeof(struct sockaddr_in6));
-
-  } else {
-    uv__set_sys_error(handle->loop, WSAEAFNOSUPPORT);
-    return -1;
-  }
+  return uv__bind(handle,
+                  AF_INET6,
+                  (struct sockaddr*)&addr,
+                  sizeof(struct sockaddr_in6));
 }
 
 
@@ -593,6 +588,7 @@ int uv_tcp_listen(uv_tcp_t* handle, int backlog, uv_connection_cb cb) {
 int uv_tcp_accept(uv_tcp_t* server, uv_tcp_t* client) {
   uv_loop_t* loop = server->loop;
   int rv = 0;
+  int family;
 
   uv_tcp_accept_t* req = server->pending_accepts;
 
@@ -607,13 +603,23 @@ int uv_tcp_accept(uv_tcp_t* server, uv_tcp_t* client) {
     return -1;
   }
 
-  if (uv_tcp_set_socket(client->loop, client, req->accept_socket, 0) == -1) {
+  if (server->flags & UV_HANDLE_IPV6) {
+    family = AF_INET6;
+  } else {
+    family = AF_INET;
+  }
+
+  if (uv_tcp_set_socket(client->loop,
+                        client,
+                        req->accept_socket,
+                        family,
+                        0) < 0) {
     closesocket(req->accept_socket);
     rv = -1;
   } else {
     uv_connection_init((uv_stream_t*) client);
     /* AcceptEx() implicitly binds the accepted socket. */
-    client->flags |= UV_HANDLE_BOUND;
+    client->flags |= UV_HANDLE_BOUND | UV_HANDLE_READABLE | UV_HANDLE_WRITABLE;
   }
 
   /* Prepare the req to pick up a new connection */
@@ -621,7 +627,7 @@ int uv_tcp_accept(uv_tcp_t* server, uv_tcp_t* client) {
   req->next_pending = NULL;
   req->accept_socket = INVALID_SOCKET;
 
-  if (!(server->flags & UV_HANDLE_CLOSING)) {
+  if (!(server->flags & UV__HANDLE_CLOSING)) {
     /* Check if we're in a middle of changing the number of pending accepts. */
     if (!(server->flags & UV_HANDLE_TCP_ACCEPT_STATE_CHANGING)) {
       uv_tcp_queue_accept(server, req);
@@ -653,21 +659,6 @@ int uv_tcp_accept(uv_tcp_t* server, uv_tcp_t* client) {
 int uv_tcp_read_start(uv_tcp_t* handle, uv_alloc_cb alloc_cb,
     uv_read_cb read_cb) {
   uv_loop_t* loop = handle->loop;
-
-  if (!(handle->flags & UV_HANDLE_CONNECTION)) {
-    uv__set_sys_error(loop, WSAEINVAL);
-    return -1;
-  }
-
-  if (handle->flags & UV_HANDLE_READING) {
-    uv__set_sys_error(loop, WSAEALREADY);
-    return -1;
-  }
-
-  if (handle->flags & UV_HANDLE_EOF) {
-    uv__set_sys_error(loop, WSAESHUTDOWN);
-    return -1;
-  }
 
   handle->flags |= UV_HANDLE_READING;
   handle->read_cb = read_cb;
@@ -756,11 +747,6 @@ int uv__tcp_connect6(uv_connect_t* req,
   int addrsize = sizeof(struct sockaddr_in6);
   BOOL success;
   DWORD bytes;
-
-  if (!uv_allow_ipv6) {
-    uv__set_sys_error(loop, WSAEAFNOSUPPORT);
-    return -1;
-  }
 
   if (handle->flags & UV_HANDLE_BIND_ERROR) {
     uv__set_sys_error(loop, handle->bind_error);
@@ -862,16 +848,6 @@ int uv_tcp_write(uv_loop_t* loop, uv_write_t* req, uv_tcp_t* handle,
     uv_buf_t bufs[], int bufcnt, uv_write_cb cb) {
   int result;
   DWORD bytes;
-
-  if (!(handle->flags & UV_HANDLE_CONNECTION)) {
-    uv__set_sys_error(loop, WSAEINVAL);
-    return -1;
-  }
-
-  if (handle->flags & UV_HANDLE_SHUTTING) {
-    uv__set_sys_error(loop, WSAESHUTDOWN);
-    return -1;
-  }
 
   uv_req_init(loop, (uv_req_t*) req);
   req->type = UV_WRITE;
@@ -978,7 +954,7 @@ void uv_process_tcp_read_req(uv_loop_t* loop, uv_tcp_t* handle,
           handle->flags &= ~UV_HANDLE_READING;
           DECREASE_ACTIVE_COUNT(loop, handle);
         }
-        handle->flags |= UV_HANDLE_EOF;
+        handle->flags &= ~UV_HANDLE_READABLE;
 
         uv__set_error(loop, UV_EOF, ERROR_SUCCESS);
         buf.base = 0;
@@ -1009,9 +985,8 @@ void uv_process_tcp_read_req(uv_loop_t* loop, uv_tcp_t* handle,
           }
         } else {
           /* Connection closed */
-          handle->flags &= ~UV_HANDLE_READING;
+          handle->flags &= ~(UV_HANDLE_READING | UV_HANDLE_READABLE);
           DECREASE_ACTIVE_COUNT(loop, handle);
-          handle->flags |= UV_HANDLE_EOF;
 
           uv__set_error(loop, UV_EOF, ERROR_SUCCESS);
           handle->read_cb((uv_stream_t*)handle, -1, buf);
@@ -1078,7 +1053,7 @@ void uv_process_tcp_write_req(uv_loop_t* loop, uv_tcp_t* handle,
   }
 
   handle->write_reqs_pending--;
-  if (handle->flags & UV_HANDLE_SHUTTING &&
+  if (handle->shutdown_req != NULL &&
       handle->write_reqs_pending == 0) {
     uv_want_endgame(loop, (uv_handle_t*)handle);
   }
@@ -1147,6 +1122,7 @@ void uv_process_tcp_connect_req(uv_loop_t* loop, uv_tcp_t* handle,
                     NULL,
                     0) == 0) {
       uv_connection_init((uv_stream_t*)handle);
+      handle->flags |= UV_HANDLE_READABLE | UV_HANDLE_WRITABLE;
       loop->active_tcp_streams++;
       ((uv_connect_cb)req->cb)(req, 0);
     } else {
@@ -1182,21 +1158,22 @@ int uv_tcp_import(uv_tcp_t* tcp, WSAPROTOCOL_INFOW* socket_protocol_info,
     return -1;
   }
 
-  if (uv_tcp_set_socket(tcp->loop, tcp, socket, 1) != 0) {
+  if (uv_tcp_set_socket(tcp->loop,
+                        tcp,
+                        socket,
+                        socket_protocol_info->iAddressFamily,
+                        1) < 0) {
     closesocket(socket);
     return -1;
   }
 
   if (tcp_connection) {
     uv_connection_init((uv_stream_t*)tcp);
+    tcp->flags |= UV_HANDLE_READABLE | UV_HANDLE_WRITABLE;
   }
 
   tcp->flags |= UV_HANDLE_BOUND;
   tcp->flags |= UV_HANDLE_SHARED_TCP_SOCKET;
-
-  if (socket_protocol_info->iAddressFamily == AF_INET6) {
-    tcp->flags |= UV_HANDLE_IPV6;
-  }
 
   tcp->loop->active_tcp_streams++;
   return 0;
@@ -1350,7 +1327,6 @@ void uv_tcp_close(uv_loop_t* loop, uv_tcp_t* tcp) {
     if (!(tcp->flags & UV_HANDLE_SHARED_TCP_SOCKET)) {
       /* Just do shutdown on non-shared sockets, which ensures graceful close. */
       shutdown(tcp->socket, SD_SEND);
-      tcp->flags |= UV_HANDLE_SHUT;
 
     } else if (uv_tcp_try_cancel_io(tcp) == 0) {
       /* In case of a shared socket, we try to cancel all outstanding I/O, */
@@ -1405,9 +1381,43 @@ void uv_tcp_close(uv_loop_t* loop, uv_tcp_t* tcp) {
     tcp->flags |= UV_HANDLE_TCP_SOCKET_CLOSED;
   }
 
-  uv__handle_start(tcp);
+  tcp->flags &= ~(UV_HANDLE_READABLE | UV_HANDLE_WRITABLE);
+  uv__handle_closing(tcp);
 
   if (tcp->reqs_pending == 0) {
     uv_want_endgame(tcp->loop, (uv_handle_t*)tcp);
   }
+}
+
+
+int uv_tcp_open(uv_tcp_t* handle, uv_os_sock_t sock) {
+  WSAPROTOCOL_INFOW protocol_info;
+  int opt_len;
+
+  /* Detect the address family of the socket. */
+  opt_len = (int) sizeof protocol_info;
+  if (getsockopt(sock,
+                 SOL_SOCKET,
+                 SO_PROTOCOL_INFOW,
+                 (char*) &protocol_info,
+                 &opt_len) == SOCKET_ERROR) {
+    uv__set_sys_error(handle->loop, GetLastError());
+    return -1;
+  }
+
+  /* Make the socket non-inheritable */
+  if (!SetHandleInformation((HANDLE) sock, HANDLE_FLAG_INHERIT, 0)) {
+    uv__set_sys_error(handle->loop, GetLastError());
+    return -1;
+  }
+
+  if (uv_tcp_set_socket(handle->loop,
+                        handle,
+                        sock,
+                        protocol_info.iAddressFamily,
+                        1) < 0) {
+    return -1;
+  }
+
+  return 0;
 }

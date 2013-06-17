@@ -24,9 +24,8 @@
 #include <malloc.h>
 #include <stdio.h>
 #include <process.h>
-#include <windows.h>
 #if !defined(__MINGW32__)
-#include <crtdbg.h>
+# include <crtdbg.h>
 #endif
 
 
@@ -45,6 +44,11 @@
 
 /* Do platform-specific initialization. */
 void platform_init(int argc, char **argv) {
+  const char* tap;
+
+  tap = getenv("UV_TAP_OUTPUT");
+  tap_output = (tap != NULL && atoi(tap) > 0);
+
   /* Disable the "application crashed" popup. */
   SetErrorMode(SEM_FAILCRITICALERRORS | SEM_NOGPFAULTERRORBOX |
       SEM_NOOPENFILEERRORBOX);
@@ -65,7 +69,7 @@ void platform_init(int argc, char **argv) {
 }
 
 
-int process_start(char *name, char *part, process_info_t *p) {
+int process_start(char *name, char *part, process_info_t *p, int is_helper) {
   HANDLE file = INVALID_HANDLE_VALUE;
   HANDLE nul = INVALID_HANDLE_VALUE;
   WCHAR path[MAX_PATH], filename[MAX_PATH];
@@ -111,8 +115,8 @@ int process_start(char *name, char *part, process_info_t *p) {
     goto error;
 
   if (part) {
-    if (_snwprintf((wchar_t*)args,
-                   sizeof(args) / sizeof(wchar_t),
+    if (_snwprintf((WCHAR*)args,
+                   sizeof(args) / sizeof(WCHAR),
                    L"\"%s\" %S %S",
                    image,
                    name,
@@ -120,8 +124,8 @@ int process_start(char *name, char *part, process_info_t *p) {
       goto error;
     }
   } else {
-    if (_snwprintf((wchar_t*)args,
-                   sizeof(args) / sizeof(wchar_t),
+    if (_snwprintf((WCHAR*)args,
+                   sizeof(args) / sizeof(WCHAR),
                    L"\"%s\" %S",
                    image,
                    name) < 0) {
@@ -208,13 +212,34 @@ long int process_output_size(process_info_t *p) {
 int process_copy_output(process_info_t *p, int fd) {
   DWORD read;
   char buf[1024];
+  char *line, *start;
 
   if (SetFilePointer(p->stdio_out, 0, 0, FILE_BEGIN) == INVALID_SET_FILE_POINTER)
     return -1;
 
+  if (tap_output)
+    write(fd, "#", 1);
+
   while (ReadFile(p->stdio_out, (void*)&buf, sizeof(buf), &read, NULL) &&
-         read > 0)
-    write(fd, buf, read);
+         read > 0) {
+    if (tap_output) {
+      start = buf;
+
+      while ((line = strchr(start, '\n')) != NULL) {
+        write(fd, start, line - start + 1);
+        write(fd, "#", 1);
+        start = line + 1;
+      }
+
+      if (start < buf + read)
+        write(fd, start, buf + read - start);
+    } else {
+      write(fd, buf, read);
+    }
+  }
+
+  if (tap_output)
+    write(fd, "\n", 1);
 
   if (GetLastError() != ERROR_HANDLE_EOF)
     return -1;

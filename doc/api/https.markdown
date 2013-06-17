@@ -125,7 +125,7 @@ The following options from [tls.connect()][] can also be specified. However, a
 - `rejectUnauthorized`: If `true`, the server certificate is verified against
   the list of supplied CAs. An `'error'` event is emitted if verification
   fails. Verification happens at the connection level, *before* the HTTP
-  request is sent. Default `false`.
+  request is sent. Default `true`.
 
 In order to specify these options, use a custom `Agent`.
 
@@ -205,5 +205,5 @@ Global instance of [https.Agent][] for all HTTPS client requests.
 [http.request()]: http.html#http_http_request_options_callback
 [https.Agent]: #https_class_https_agent
 [https.request()]: #https_https_request_options_callback
-[tls.connect()]: tls.html#tls_tls_connect_options_secureconnectlistener
+[tls.connect()]: tls.html#tls_tls_connect_options_callback
 [tls.createServer()]: tls.html#tls_tls_createserver_options_secureconnectionlistener
