@@ -73,7 +73,9 @@ static void uv__chld(uv_signal_t* handle, int signum) {
   assert(signum == SIGCHLD);
 
   for (;;) {
-    pid = waitpid(-1, &status, WNOHANG);
+    do
+      pid = waitpid(-1, &status, WNOHANG);
+    while (pid == -1 && errno == EINTR);
 
     if (pid == 0)
       return;
@@ -419,6 +421,8 @@ int uv_spawn(uv_loop_t* loop,
   }
 
   if (pid == 0) {
+    for (i = 0; i < options.nwfd_count; i++)
+      close(options.nwfds[i]);
     uv__process_child_init(options, stdio_count, pipes, signal_pipe[1]);
     abort();
   }
