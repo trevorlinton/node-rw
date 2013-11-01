@@ -3,593 +3,1143 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 45;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		4DF30D42CD229244E76E1012 /* All */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 6E3D9CD2CF6F910CD1E53A8E /* Build configuration list for PBXAggregateTarget "All" */;
+			buildPhases = (
+			);
+			dependencies = (
+				CD3720760DAB854D7438084A /* PBXTargetDependency */,
+				D1AC78443630497B5C15AECB /* PBXTargetDependency */,
+				16426B6E1C482E851A63B5C9 /* PBXTargetDependency */,
+			);
+			name = All;
+			productName = All;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
-		6C43CBDC1534F76F00162364 /* ffi.c in Sources */ = {isa = PBXBuildFile; fileRef = 6C43CBBD1534F76F00162364 /* ffi.c */; };
-		6C43CBDD1534F76F00162364 /* sysv.S in Sources */ = {isa = PBXBuildFile; fileRef = 6C43CBBF1534F76F00162364 /* sysv.S */; };
-		6C43CBDE1534F76F00162364 /* trampoline.S in Sources */ = {isa = PBXBuildFile; fileRef = 6C43CBC01534F76F00162364 /* trampoline.S */; };
-		6C43CBE61534F76F00162364 /* darwin.S in Sources */ = {isa = PBXBuildFile; fileRef = 6C43CBC91534F76F00162364 /* darwin.S */; };
-		6C43CBE81534F76F00162364 /* ffi.c in Sources */ = {isa = PBXBuildFile; fileRef = 6C43CBCB1534F76F00162364 /* ffi.c */; };
-		6C43CBE91534F76F00162364 /* ffi64.c in Sources */ = {isa = PBXBuildFile; fileRef = 6C43CBCC1534F76F00162364 /* ffi64.c */; };
-		6C43CC1F1534F77800162364 /* darwin.S in Sources */ = {isa = PBXBuildFile; fileRef = 6C43CC051534F77800162364 /* darwin.S */; };
-		6C43CC201534F77800162364 /* darwin64.S in Sources */ = {isa = PBXBuildFile; fileRef = 6C43CC061534F77800162364 /* darwin64.S */; };
-		6C43CC211534F77800162364 /* ffi.c in Sources */ = {isa = PBXBuildFile; fileRef = 6C43CC071534F77800162364 /* ffi.c */; };
-		6C43CC221534F77800162364 /* ffi64.c in Sources */ = {isa = PBXBuildFile; fileRef = 6C43CC081534F77800162364 /* ffi64.c */; };
-		6C43CC2F1534F7BE00162364 /* closures.c in Sources */ = {isa = PBXBuildFile; fileRef = 6C43CC281534F7BE00162364 /* closures.c */; };
-		6C43CC301534F7BE00162364 /* closures.c in Sources */ = {isa = PBXBuildFile; fileRef = 6C43CC281534F7BE00162364 /* closures.c */; };
-		6C43CC311534F7BE00162364 /* debug.c in Sources */ = {isa = PBXBuildFile; fileRef = 6C43CC291534F7BE00162364 /* debug.c */; };
-		6C43CC321534F7BE00162364 /* debug.c in Sources */ = {isa = PBXBuildFile; fileRef = 6C43CC291534F7BE00162364 /* debug.c */; };
-		6C43CC331534F7BE00162364 /* dlmalloc.c in Sources */ = {isa = PBXBuildFile; fileRef = 6C43CC2A1534F7BE00162364 /* dlmalloc.c */; };
-		6C43CC341534F7BE00162364 /* dlmalloc.c in Sources */ = {isa = PBXBuildFile; fileRef = 6C43CC2A1534F7BE00162364 /* dlmalloc.c */; };
-		6C43CC351534F7BE00162364 /* java_raw_api.c in Sources */ = {isa = PBXBuildFile; fileRef = 6C43CC2B1534F7BE00162364 /* java_raw_api.c */; };
-		6C43CC361534F7BE00162364 /* java_raw_api.c in Sources */ = {isa = PBXBuildFile; fileRef = 6C43CC2B1534F7BE00162364 /* java_raw_api.c */; };
-		6C43CC371534F7BE00162364 /* prep_cif.c in Sources */ = {isa = PBXBuildFile; fileRef = 6C43CC2C1534F7BE00162364 /* prep_cif.c */; };
-		6C43CC381534F7BE00162364 /* prep_cif.c in Sources */ = {isa = PBXBuildFile; fileRef = 6C43CC2C1534F7BE00162364 /* prep_cif.c */; };
-		6C43CC391534F7BE00162364 /* raw_api.c in Sources */ = {isa = PBXBuildFile; fileRef = 6C43CC2D1534F7BE00162364 /* raw_api.c */; };
-		6C43CC3A1534F7BE00162364 /* raw_api.c in Sources */ = {isa = PBXBuildFile; fileRef = 6C43CC2D1534F7BE00162364 /* raw_api.c */; };
-		6C43CC3B1534F7BE00162364 /* types.c in Sources */ = {isa = PBXBuildFile; fileRef = 6C43CC2E1534F7BE00162364 /* types.c */; };
-		6C43CC3C1534F7BE00162364 /* types.c in Sources */ = {isa = PBXBuildFile; fileRef = 6C43CC2E1534F7BE00162364 /* types.c */; };
-		6C43CC971535032600162364 /* ffi.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C43CC8D1535032600162364 /* ffi.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6C43CC981535032600162364 /* ffi_common.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C43CC8E1535032600162364 /* ffi_common.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6C43CC991535032600162364 /* ffi_i386.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C43CC8F1535032600162364 /* ffi_i386.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6C43CC9A1535032600162364 /* ffi_x86_64.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C43CC901535032600162364 /* ffi_x86_64.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6C43CC9B1535032600162364 /* fficonfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C43CC911535032600162364 /* fficonfig.h */; };
-		6C43CC9C1535032600162364 /* fficonfig_i386.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C43CC921535032600162364 /* fficonfig_i386.h */; };
-		6C43CC9D1535032600162364 /* fficonfig_x86_64.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C43CC931535032600162364 /* fficonfig_x86_64.h */; };
-		6C43CC9E1535032600162364 /* ffitarget.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C43CC941535032600162364 /* ffitarget.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6C43CC9F1535032600162364 /* ffitarget_i386.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C43CC951535032600162364 /* ffitarget_i386.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6C43CCA01535032600162364 /* ffitarget_x86_64.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C43CC961535032600162364 /* ffitarget_x86_64.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6C43CCAD1535039600162364 /* ffi.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C43CCA21535039600162364 /* ffi.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6C43CCAE1535039600162364 /* ffi_armv7.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C43CCA31535039600162364 /* ffi_armv7.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6C43CCAF1535039600162364 /* ffi_common.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C43CCA41535039600162364 /* ffi_common.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6C43CCB01535039600162364 /* ffi_i386.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C43CCA51535039600162364 /* ffi_i386.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6C43CCB11535039600162364 /* fficonfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C43CCA61535039600162364 /* fficonfig.h */; };
-		6C43CCB21535039600162364 /* fficonfig_armv7.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C43CCA71535039600162364 /* fficonfig_armv7.h */; };
-		6C43CCB31535039600162364 /* fficonfig_i386.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C43CCA81535039600162364 /* fficonfig_i386.h */; };
-		6C43CCB41535039600162364 /* ffitarget.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C43CCA91535039600162364 /* ffitarget.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6C43CCB51535039600162364 /* ffitarget_arm.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C43CCAA1535039600162364 /* ffitarget_arm.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6C43CCB61535039600162364 /* ffitarget_armv7.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C43CCAB1535039600162364 /* ffitarget_armv7.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6C43CCB71535039600162364 /* ffitarget_i386.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C43CCAC1535039600162364 /* ffitarget_i386.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1FB5F56E7B77AF2F55907D88 /* prep_cif.c in Sources */ = {isa = PBXBuildFile; fileRef = ACCE01A5A4AFF44F6B4DF562 /* prep_cif.c */; };
+		27BCE23F43F6FA9A2C4D163E /* ffi.c in Sources */ = {isa = PBXBuildFile; fileRef = 8BFA06FB9FF3405673276835 /* ffi.c */; };
+		4BCE10DAB2A105EDE9B282B0 /* libffi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E061AC5F76A9BD3B01EBD7F /* libffi.a */; };
+		4E5CE307DF749D7D371F0832 /* libffi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E061AC5F76A9BD3B01EBD7F /* libffi.a */; };
+		6C582A27E145A3936FC725DA /* java_raw_api.c in Sources */ = {isa = PBXBuildFile; fileRef = 17651E939C4D8C95A434840E /* java_raw_api.c */; };
+		6CC43AA5BCF95F60A1966BB6 /* darwin.S in Sources */ = {isa = PBXBuildFile; fileRef = 22939330DAABE9070E886E00 /* darwin.S */; };
+		90B1F30BBC7BAF7DCCEEB476 /* closures.c in Sources */ = {isa = PBXBuildFile; fileRef = 0C208FCC50DC20814D69E7BF /* closures.c */; };
+		9B36E616A2199EA033DE3463 /* raw_api.c in Sources */ = {isa = PBXBuildFile; fileRef = 67B6A8A5A932263CE7BEA5DE /* raw_api.c */; };
+		AC821E37308BF1AB396C4BE9 /* ffi64.c in Sources */ = {isa = PBXBuildFile; fileRef = 56E8E09C47685F886B3CDA0D /* ffi64.c */; };
+		B42D696557BDEE61F4A9C6E8 /* closure.c in Sources */ = {isa = PBXBuildFile; fileRef = E533F23697E1AFF7B140FC75 /* closure.c */; };
+		B4B3F54DD329063B8FE31338 /* test.c in Sources */ = {isa = PBXBuildFile; fileRef = 5613C0774DAB5D7F93DA182C /* test.c */; };
+		C3C6DC72EB6275EE08E2556D /* darwin64.S in Sources */ = {isa = PBXBuildFile; fileRef = 8DFE20033396FFDA1156F0C6 /* darwin64.S */; };
+		F1C456A3B61F6CE0C5803E2D /* types.c in Sources */ = {isa = PBXBuildFile; fileRef = A8F76611CCAEBC23C11DBD2D /* types.c */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		1A95C9769A24738FCA279473 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4BCF9E06C6DB1D30B53424DC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CFB4EC2C383CA84B120B9392;
+			remoteInfo = test;
+		};
+		5C4F82EB7EF6F28864E1B081 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4BCF9E06C6DB1D30B53424DC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E6901C5E0122FAED16CD52DF;
+			remoteInfo = ffi;
+		};
+		74EF93C32B8F40F838788801 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4BCF9E06C6DB1D30B53424DC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B21BD8438B9A6F1494F0FDA3;
+			remoteInfo = "closure-test";
+		};
+		FDD97683CDE51EF886FB0F74 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4BCF9E06C6DB1D30B53424DC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E6901C5E0122FAED16CD52DF;
+			remoteInfo = ffi;
+		};
+		FF33E6D74AAAB69F4016C817 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4BCF9E06C6DB1D30B53424DC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E6901C5E0122FAED16CD52DF;
+			remoteInfo = ffi;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		6C43CB3D1534E9D100162364 /* libffi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libffi.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		6C43CBBD1534F76F00162364 /* ffi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ffi.c; sourceTree = "<group>"; };
-		6C43CBBF1534F76F00162364 /* sysv.S */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = sysv.S; sourceTree = "<group>"; };
-		6C43CBC01534F76F00162364 /* trampoline.S */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = trampoline.S; sourceTree = "<group>"; };
-		6C43CBC91534F76F00162364 /* darwin.S */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = darwin.S; sourceTree = "<group>"; };
-		6C43CBCB1534F76F00162364 /* ffi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ffi.c; sourceTree = "<group>"; };
-		6C43CBCC1534F76F00162364 /* ffi64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ffi64.c; sourceTree = "<group>"; };
-		6C43CC051534F77800162364 /* darwin.S */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = darwin.S; sourceTree = "<group>"; };
-		6C43CC061534F77800162364 /* darwin64.S */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = darwin64.S; sourceTree = "<group>"; };
-		6C43CC071534F77800162364 /* ffi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ffi.c; sourceTree = "<group>"; };
-		6C43CC081534F77800162364 /* ffi64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ffi64.c; sourceTree = "<group>"; };
-		6C43CC281534F7BE00162364 /* closures.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = closures.c; path = src/closures.c; sourceTree = SOURCE_ROOT; };
-		6C43CC291534F7BE00162364 /* debug.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = debug.c; path = src/debug.c; sourceTree = SOURCE_ROOT; };
-		6C43CC2A1534F7BE00162364 /* dlmalloc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = dlmalloc.c; path = src/dlmalloc.c; sourceTree = SOURCE_ROOT; };
-		6C43CC2B1534F7BE00162364 /* java_raw_api.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = java_raw_api.c; path = src/java_raw_api.c; sourceTree = SOURCE_ROOT; };
-		6C43CC2C1534F7BE00162364 /* prep_cif.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = prep_cif.c; path = src/prep_cif.c; sourceTree = SOURCE_ROOT; };
-		6C43CC2D1534F7BE00162364 /* raw_api.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = raw_api.c; path = src/raw_api.c; sourceTree = SOURCE_ROOT; };
-		6C43CC2E1534F7BE00162364 /* types.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = types.c; path = src/types.c; sourceTree = SOURCE_ROOT; };
-		6C43CC8D1535032600162364 /* ffi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ffi.h; sourceTree = "<group>"; };
-		6C43CC8E1535032600162364 /* ffi_common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ffi_common.h; sourceTree = "<group>"; };
-		6C43CC8F1535032600162364 /* ffi_i386.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ffi_i386.h; sourceTree = "<group>"; };
-		6C43CC901535032600162364 /* ffi_x86_64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ffi_x86_64.h; sourceTree = "<group>"; };
-		6C43CC911535032600162364 /* fficonfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fficonfig.h; sourceTree = "<group>"; };
-		6C43CC921535032600162364 /* fficonfig_i386.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fficonfig_i386.h; sourceTree = "<group>"; };
-		6C43CC931535032600162364 /* fficonfig_x86_64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fficonfig_x86_64.h; sourceTree = "<group>"; };
-		6C43CC941535032600162364 /* ffitarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ffitarget.h; sourceTree = "<group>"; };
-		6C43CC951535032600162364 /* ffitarget_i386.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ffitarget_i386.h; sourceTree = "<group>"; };
-		6C43CC961535032600162364 /* ffitarget_x86_64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ffitarget_x86_64.h; sourceTree = "<group>"; };
-		6C43CCA21535039600162364 /* ffi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ffi.h; sourceTree = "<group>"; };
-		6C43CCA31535039600162364 /* ffi_armv7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ffi_armv7.h; sourceTree = "<group>"; };
-		6C43CCA41535039600162364 /* ffi_common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ffi_common.h; sourceTree = "<group>"; };
-		6C43CCA51535039600162364 /* ffi_i386.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ffi_i386.h; sourceTree = "<group>"; };
-		6C43CCA61535039600162364 /* fficonfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fficonfig.h; sourceTree = "<group>"; };
-		6C43CCA71535039600162364 /* fficonfig_armv7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fficonfig_armv7.h; sourceTree = "<group>"; };
-		6C43CCA81535039600162364 /* fficonfig_i386.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fficonfig_i386.h; sourceTree = "<group>"; };
-		6C43CCA91535039600162364 /* ffitarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ffitarget.h; sourceTree = "<group>"; };
-		6C43CCAA1535039600162364 /* ffitarget_arm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ffitarget_arm.h; sourceTree = "<group>"; };
-		6C43CCAB1535039600162364 /* ffitarget_armv7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ffitarget_armv7.h; sourceTree = "<group>"; };
-		6C43CCAC1535039600162364 /* ffitarget_i386.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ffitarget_i386.h; sourceTree = "<group>"; };
-		F6F980BA147386130008F121 /* libffi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libffi.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C208FCC50DC20814D69E7BF /* closures.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = closures.c; sourceTree = "<group>"; };
+		0D759EDA6C3801965C9C0333 /* closure-test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "closure-test"; sourceTree = BUILT_PRODUCTS_DIR; };
+		17651E939C4D8C95A434840E /* java_raw_api.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = java_raw_api.c; sourceTree = "<group>"; };
+		22939330DAABE9070E886E00 /* darwin.S */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = darwin.S; sourceTree = "<group>"; };
+		5613C0774DAB5D7F93DA182C /* test.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = test.c; sourceTree = "<group>"; };
+		56E8E09C47685F886B3CDA0D /* ffi64.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ffi64.c; sourceTree = "<group>"; };
+		67B6A8A5A932263CE7BEA5DE /* raw_api.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = raw_api.c; sourceTree = "<group>"; };
+		6D7647C05A2A22FA7EDA1076 /* filename_rules.gypi */ = {isa = PBXFileReference; lastKnownFileType = text; name = filename_rules.gypi; path = ../../../../build/filename_rules.gypi; sourceTree = "<group>"; };
+		707509641DA376B3E3FDD21B /* release_impl.gypi */ = {isa = PBXFileReference; lastKnownFileType = text; name = release_impl.gypi; path = ../../../../build/internal/release_impl.gypi; sourceTree = "<group>"; };
+		8BFA06FB9FF3405673276835 /* ffi.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ffi.c; sourceTree = "<group>"; };
+		8DFE20033396FFDA1156F0C6 /* darwin64.S */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = darwin64.S; sourceTree = "<group>"; };
+		92B4197B90A65F04682F9FE6 /* release.gypi */ = {isa = PBXFileReference; lastKnownFileType = text; name = release.gypi; path = ../../../../build/release.gypi; sourceTree = "<group>"; };
+		9E061AC5F76A9BD3B01EBD7F /* libffi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libffi.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8F76611CCAEBC23C11DBD2D /* types.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = types.c; sourceTree = "<group>"; };
+		ACCE01A5A4AFF44F6B4DF562 /* prep_cif.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = prep_cif.c; sourceTree = "<group>"; };
+		B2694CF34C87FB30294BCFBB /* test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = test; sourceTree = BUILT_PRODUCTS_DIR; };
+		B923DC0F6043539EE69D887B /* release_impl_official.gypi */ = {isa = PBXFileReference; lastKnownFileType = text; name = release_impl_official.gypi; path = ../../../../build/internal/release_impl_official.gypi; sourceTree = "<group>"; };
+		C88E6D771BE5CE6E6CF87E38 /* release_defaults.gypi */ = {isa = PBXFileReference; lastKnownFileType = text; name = release_defaults.gypi; path = ../../../../build/internal/release_defaults.gypi; sourceTree = "<group>"; };
+		CAA5215A3A46DFC7E069955A /* libffi.gyp */ = {isa = PBXFileReference; lastKnownFileType = text; path = libffi.gyp; sourceTree = "<group>"; };
+		DA68583B16B347081FE7A609 /* common.gypi */ = {isa = PBXFileReference; lastKnownFileType = text; name = common.gypi; path = ../../../../build/common.gypi; sourceTree = "<group>"; };
+		E533F23697E1AFF7B140FC75 /* closure.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = closure.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		6C43CB3A1534E9D100162364 /* Frameworks */ = {
+		1747DA4C2A9FBE58DED984EE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E5CE307DF749D7D371F0832 /* libffi.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7C7076C3E5DDAEC75AA2E5D2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F6F980B7147386130008F121 /* Frameworks */ = {
+		D5748FF19CBD4493619805DB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BCE10DAB2A105EDE9B282B0 /* libffi.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6C43CBAF1534F76F00162364 /* iOS */ = {
+		26D0EF13B050FE9CB4BF20DE /* x86 */ = {
 			isa = PBXGroup;
 			children = (
-				6C43CCA11535039600162364 /* include */,
-				6C43CBBB1534F76F00162364 /* src */,
-			);
-			name = iOS;
-			path = ios;
-			sourceTree = "<group>";
-		};
-		6C43CBBB1534F76F00162364 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				6C43CBC81534F76F00162364 /* x86 */,
-				6C43CBBC1534F76F00162364 /* arm */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
-		6C43CBBC1534F76F00162364 /* arm */ = {
-			isa = PBXGroup;
-			children = (
-				6C43CBBD1534F76F00162364 /* ffi.c */,
-				6C43CBBF1534F76F00162364 /* sysv.S */,
-				6C43CBC01534F76F00162364 /* trampoline.S */,
-			);
-			path = arm;
-			sourceTree = "<group>";
-		};
-		6C43CBC81534F76F00162364 /* x86 */ = {
-			isa = PBXGroup;
-			children = (
-				6C43CBC91534F76F00162364 /* darwin.S */,
-				6C43CBCB1534F76F00162364 /* ffi.c */,
-				6C43CBCC1534F76F00162364 /* ffi64.c */,
+				22939330DAABE9070E886E00 /* darwin.S */,
+				8DFE20033396FFDA1156F0C6 /* darwin64.S */,
+				8BFA06FB9FF3405673276835 /* ffi.c */,
+				56E8E09C47685F886B3CDA0D /* ffi64.c */,
 			);
 			path = x86;
 			sourceTree = "<group>";
 		};
-		6C43CBF01534F77800162364 /* OS X */ = {
+		2761CF656C213FD67A168D3E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6C43CC8C1535032600162364 /* include */,
-				6C43CBFC1534F77800162364 /* src */,
-			);
-			name = "OS X";
-			path = osx;
-			sourceTree = "<group>";
-		};
-		6C43CBFC1534F77800162364 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				6C43CC041534F77800162364 /* x86 */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
-		6C43CC041534F77800162364 /* x86 */ = {
-			isa = PBXGroup;
-			children = (
-				6C43CC051534F77800162364 /* darwin.S */,
-				6C43CC061534F77800162364 /* darwin64.S */,
-				6C43CC071534F77800162364 /* ffi.c */,
-				6C43CC081534F77800162364 /* ffi64.c */,
-			);
-			path = x86;
-			sourceTree = "<group>";
-		};
-		6C43CC3D1534F7C400162364 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				6C43CC281534F7BE00162364 /* closures.c */,
-				6C43CC291534F7BE00162364 /* debug.c */,
-				6C43CC2A1534F7BE00162364 /* dlmalloc.c */,
-				6C43CC2B1534F7BE00162364 /* java_raw_api.c */,
-				6C43CC2C1534F7BE00162364 /* prep_cif.c */,
-				6C43CC2D1534F7BE00162364 /* raw_api.c */,
-				6C43CC2E1534F7BE00162364 /* types.c */,
-			);
-			name = src;
-			path = ios;
-			sourceTree = "<group>";
-		};
-		6C43CC8C1535032600162364 /* include */ = {
-			isa = PBXGroup;
-			children = (
-				6C43CC8D1535032600162364 /* ffi.h */,
-				6C43CC8E1535032600162364 /* ffi_common.h */,
-				6C43CC8F1535032600162364 /* ffi_i386.h */,
-				6C43CC901535032600162364 /* ffi_x86_64.h */,
-				6C43CC911535032600162364 /* fficonfig.h */,
-				6C43CC921535032600162364 /* fficonfig_i386.h */,
-				6C43CC931535032600162364 /* fficonfig_x86_64.h */,
-				6C43CC941535032600162364 /* ffitarget.h */,
-				6C43CC951535032600162364 /* ffitarget_i386.h */,
-				6C43CC961535032600162364 /* ffitarget_x86_64.h */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		6C43CCA11535039600162364 /* include */ = {
-			isa = PBXGroup;
-			children = (
-				6C43CCA21535039600162364 /* ffi.h */,
-				6C43CCA31535039600162364 /* ffi_armv7.h */,
-				6C43CCA41535039600162364 /* ffi_common.h */,
-				6C43CCA51535039600162364 /* ffi_i386.h */,
-				6C43CCA61535039600162364 /* fficonfig.h */,
-				6C43CCA71535039600162364 /* fficonfig_armv7.h */,
-				6C43CCA81535039600162364 /* fficonfig_i386.h */,
-				6C43CCA91535039600162364 /* ffitarget.h */,
-				6C43CCAA1535039600162364 /* ffitarget_arm.h */,
-				6C43CCAB1535039600162364 /* ffitarget_armv7.h */,
-				6C43CCAC1535039600162364 /* ffitarget_i386.h */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		F6B0839514721EE50031D8A1 = {
-			isa = PBXGroup;
-			children = (
-				6C43CC3D1534F7C400162364 /* src */,
-				6C43CBAF1534F76F00162364 /* iOS */,
-				6C43CBF01534F77800162364 /* OS X */,
-				F6F980C6147386260008F121 /* Products */,
-			);
-			sourceTree = "<group>";
-		};
-		F6F980C6147386260008F121 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				F6F980BA147386130008F121 /* libffi.a */,
-				6C43CB3D1534E9D100162364 /* libffi.a */,
+				9E061AC5F76A9BD3B01EBD7F /* libffi.a */,
+				B2694CF34C87FB30294BCFBB /* test */,
+				0D759EDA6C3801965C9C0333 /* closure-test */,
 			);
 			name = Products;
-			path = ../..;
-			sourceTree = BUILT_PRODUCTS_DIR;
+			sourceTree = "<group>";
+		};
+		3FE1E551136D9763F527DB07 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				E36DF8F6C6448442462FC02D /* src */,
+				E533F23697E1AFF7B140FC75 /* closure.c */,
+				5613C0774DAB5D7F93DA182C /* test.c */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		4D7C26A89B132D28E58665C4 /* Build */ = {
+			isa = PBXGroup;
+			children = (
+				DA68583B16B347081FE7A609 /* common.gypi */,
+				6D7647C05A2A22FA7EDA1076 /* filename_rules.gypi */,
+				CAA5215A3A46DFC7E069955A /* libffi.gyp */,
+				92B4197B90A65F04682F9FE6 /* release.gypi */,
+				C88E6D771BE5CE6E6CF87E38 /* release_defaults.gypi */,
+				707509641DA376B3E3FDD21B /* release_impl.gypi */,
+				B923DC0F6043539EE69D887B /* release_impl_official.gypi */,
+			);
+			name = Build;
+			sourceTree = "<group>";
+		};
+		767E88597F3BC112815F58F2 = {
+			isa = PBXGroup;
+			children = (
+				3FE1E551136D9763F527DB07 /* Source */,
+				2761CF656C213FD67A168D3E /* Products */,
+				4D7C26A89B132D28E58665C4 /* Build */,
+			);
+			sourceTree = "<group>";
+		};
+		E36DF8F6C6448442462FC02D /* src */ = {
+			isa = PBXGroup;
+			children = (
+				26D0EF13B050FE9CB4BF20DE /* x86 */,
+				0C208FCC50DC20814D69E7BF /* closures.c */,
+				17651E939C4D8C95A434840E /* java_raw_api.c */,
+				ACCE01A5A4AFF44F6B4DF562 /* prep_cif.c */,
+				67B6A8A5A932263CE7BEA5DE /* raw_api.c */,
+				A8F76611CCAEBC23C11DBD2D /* types.c */,
+			);
+			path = src;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		6C43CB3B1534E9D100162364 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6C43CC971535032600162364 /* ffi.h in Headers */,
-				6C43CC981535032600162364 /* ffi_common.h in Headers */,
-				6C43CC991535032600162364 /* ffi_i386.h in Headers */,
-				6C43CC9A1535032600162364 /* ffi_x86_64.h in Headers */,
-				6C43CC9E1535032600162364 /* ffitarget.h in Headers */,
-				6C43CC9F1535032600162364 /* ffitarget_i386.h in Headers */,
-				6C43CCA01535032600162364 /* ffitarget_x86_64.h in Headers */,
-				6C43CC9B1535032600162364 /* fficonfig.h in Headers */,
-				6C43CC9C1535032600162364 /* fficonfig_i386.h in Headers */,
-				6C43CC9D1535032600162364 /* fficonfig_x86_64.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F6F980B8147386130008F121 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6C43CCAD1535039600162364 /* ffi.h in Headers */,
-				6C43CCAE1535039600162364 /* ffi_armv7.h in Headers */,
-				6C43CCAF1535039600162364 /* ffi_common.h in Headers */,
-				6C43CCB01535039600162364 /* ffi_i386.h in Headers */,
-				6C43CCB41535039600162364 /* ffitarget.h in Headers */,
-				6C43CCB51535039600162364 /* ffitarget_arm.h in Headers */,
-				6C43CCB61535039600162364 /* ffitarget_armv7.h in Headers */,
-				6C43CCB71535039600162364 /* ffitarget_i386.h in Headers */,
-				6C43CCB11535039600162364 /* fficonfig.h in Headers */,
-				6C43CCB21535039600162364 /* fficonfig_armv7.h in Headers */,
-				6C43CCB31535039600162364 /* fficonfig_i386.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
-		6C43CB3C1534E9D100162364 /* libffi OS X */ = {
+		B21BD8438B9A6F1494F0FDA3 /* closure-test */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6C43CB4A1534E9D100162364 /* Build configuration list for PBXNativeTarget "libffi OS X" */;
+			buildConfigurationList = EDF69BD194C2CCEF533B6F7E /* Build configuration list for PBXNativeTarget "closure-test" */;
 			buildPhases = (
-				6C43CC401534FF3B00162364 /* Generate Source and Headers */,
-				6C43CB391534E9D100162364 /* Sources */,
-				6C43CB3A1534E9D100162364 /* Frameworks */,
-				6C43CB3B1534E9D100162364 /* Headers */,
+				C3187DD19DD2A7254D51B131 /* Sources */,
+				D5748FF19CBD4493619805DB /* Frameworks */,
+				F28ACECA49CF100B94BCF857 /* Postbuild "Change Mach-O Flags" */,
+				569A83D23897CB59B1D5817C /* Postbuild "Strip If Needed" */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				74BB86335B7F1E8377F25CA4 /* PBXTargetDependency */,
 			);
-			name = "libffi OS X";
-			productName = "ffi OS X";
-			productReference = 6C43CB3D1534E9D100162364 /* libffi.a */;
-			productType = "com.apple.product-type.library.static";
+			name = "closure-test";
+			productName = "closure-test";
+			productReference = 0D759EDA6C3801965C9C0333 /* closure-test */;
+			productType = "com.apple.product-type.tool";
 		};
-		F6F980B9147386130008F121 /* libffi iOS */ = {
+		CFB4EC2C383CA84B120B9392 /* test */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F6F980C4147386130008F121 /* Build configuration list for PBXNativeTarget "libffi iOS" */;
+			buildConfigurationList = 5F76F8E2DEC3A987C1A10A9A /* Build configuration list for PBXNativeTarget "test" */;
 			buildPhases = (
-				6C43CC3E1534F8E200162364 /* Generate Trampoline */,
-				6C43CC3F1534FF1B00162364 /* Generate Source and Headers */,
-				F6F980B6147386130008F121 /* Sources */,
-				F6F980B7147386130008F121 /* Frameworks */,
-				F6F980B8147386130008F121 /* Headers */,
+				CFD49188E87D79E8FC9CEA23 /* Sources */,
+				1747DA4C2A9FBE58DED984EE /* Frameworks */,
+				05B07849551D9861B9C010FA /* Postbuild "Change Mach-O Flags" */,
+				78A1954DACD7D2721BC1B467 /* Postbuild "Strip If Needed" */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FAD9CE4D9D7A9E8B902371BE /* PBXTargetDependency */,
+			);
+			name = test;
+			productName = test;
+			productReference = B2694CF34C87FB30294BCFBB /* test */;
+			productType = "com.apple.product-type.tool";
+		};
+		E6901C5E0122FAED16CD52DF /* ffi */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E128CF9B151AF11237407B33 /* Build configuration list for PBXNativeTarget "ffi" */;
+			buildPhases = (
+				7D18BA02A1588233A9BB3244 /* Sources */,
+				7C7076C3E5DDAEC75AA2E5D2 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "libffi iOS";
+			name = ffi;
 			productName = ffi;
-			productReference = F6F980BA147386130008F121 /* libffi.a */;
+			productReference = 9E061AC5F76A9BD3B01EBD7F /* libffi.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		F6B0839714721EE50031D8A1 /* Project object */ = {
+		4BCF9E06C6DB1D30B53424DC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				BuildIndependentTargetsInParallel = YES;
 			};
-			buildConfigurationList = F6B0839A14721EE50031D8A1 /* Build configuration list for PBXProject "libffi" */;
+			buildConfigurationList = 3F201194C1F59D42B3C6746B /* Build configuration list for PBXProject "libffi" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
-			hasScannedForEncodings = 0;
-			knownRegions = (
-				en,
-			);
-			mainGroup = F6B0839514721EE50031D8A1;
-			productRefGroup = F6B0839514721EE50031D8A1;
+			hasScannedForEncodings = 1;
+			mainGroup = 767E88597F3BC112815F58F2;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F6F980B9147386130008F121 /* libffi iOS */,
-				6C43CB3C1534E9D100162364 /* libffi OS X */,
+				4DF30D42CD229244E76E1012 /* All */,
+				E6901C5E0122FAED16CD52DF /* ffi */,
+				CFB4EC2C383CA84B120B9392 /* test */,
+				B21BD8438B9A6F1494F0FDA3 /* closure-test */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		6C43CC3E1534F8E200162364 /* Generate Trampoline */ = {
+		05B07849551D9861B9C010FA /* Postbuild "Change Mach-O Flags" */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(EXECUTABLE_PATH)",
 			);
-			name = "Generate Trampoline";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /usr/bin/python;
-			shellScript = "import subprocess\nimport re\nimport os\nimport errno\nimport sys\n\ndef main():\n    with open('src/arm/trampoline.S', 'w') as tramp_out:\n        p = subprocess.Popen(['bash', 'src/arm/gentramp.sh'], stdout=tramp_out)\n        p.wait()\n\nif __name__ == '__main__':\n    main()";
-		};
-		6C43CC3F1534FF1B00162364 /* Generate Source and Headers */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Generate Source and Headers";
+			name = "Postbuild \"Change Mach-O Flags\"";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/bin/python generate-ios-source-and-headers.py";
+			shellScript = "exec ../../../../build/mac/change_mach_o_flags_from_xcode.sh\nexit 1\n";
+			showEnvVarsInLog = 0;
 		};
-		6C43CC401534FF3B00162364 /* Generate Source and Headers */ = {
+		569A83D23897CB59B1D5817C /* Postbuild "Strip If Needed" */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(EXECUTABLE_PATH)",
 			);
-			name = "Generate Source and Headers";
+			name = "Postbuild \"Strip If Needed\"";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/bin/python generate-osx-source-and-headers.py";
+			shellScript = "exec ../../../../build/mac/strip_from_xcode\nexit 1\n";
+			showEnvVarsInLog = 0;
+		};
+		78A1954DACD7D2721BC1B467 /* Postbuild "Strip If Needed" */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(EXECUTABLE_PATH)",
+			);
+			name = "Postbuild \"Strip If Needed\"";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "exec ../../../../build/mac/strip_from_xcode\nexit 1\n";
+			showEnvVarsInLog = 0;
+		};
+		F28ACECA49CF100B94BCF857 /* Postbuild "Change Mach-O Flags" */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(EXECUTABLE_PATH)",
+			);
+			name = "Postbuild \"Change Mach-O Flags\"";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "exec ../../../../build/mac/change_mach_o_flags_from_xcode.sh\nexit 1\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		6C43CB391534E9D100162364 /* Sources */ = {
+		7D18BA02A1588233A9BB3244 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6C43CC1F1534F77800162364 /* darwin.S in Sources */,
-				6C43CC201534F77800162364 /* darwin64.S in Sources */,
-				6C43CC211534F77800162364 /* ffi.c in Sources */,
-				6C43CC221534F77800162364 /* ffi64.c in Sources */,
-				6C43CC301534F7BE00162364 /* closures.c in Sources */,
-				6C43CC321534F7BE00162364 /* debug.c in Sources */,
-				6C43CC341534F7BE00162364 /* dlmalloc.c in Sources */,
-				6C43CC361534F7BE00162364 /* java_raw_api.c in Sources */,
-				6C43CC381534F7BE00162364 /* prep_cif.c in Sources */,
-				6C43CC3A1534F7BE00162364 /* raw_api.c in Sources */,
-				6C43CC3C1534F7BE00162364 /* types.c in Sources */,
+				1FB5F56E7B77AF2F55907D88 /* prep_cif.c in Sources */,
+				F1C456A3B61F6CE0C5803E2D /* types.c in Sources */,
+				9B36E616A2199EA033DE3463 /* raw_api.c in Sources */,
+				6C582A27E145A3936FC725DA /* java_raw_api.c in Sources */,
+				90B1F30BBC7BAF7DCCEEB476 /* closures.c in Sources */,
+				27BCE23F43F6FA9A2C4D163E /* ffi.c in Sources */,
+				AC821E37308BF1AB396C4BE9 /* ffi64.c in Sources */,
+				6CC43AA5BCF95F60A1966BB6 /* darwin.S in Sources */,
+				C3C6DC72EB6275EE08E2556D /* darwin64.S in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F6F980B6147386130008F121 /* Sources */ = {
+		C3187DD19DD2A7254D51B131 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6C43CBDC1534F76F00162364 /* ffi.c in Sources */,
-				6C43CBDD1534F76F00162364 /* sysv.S in Sources */,
-				6C43CBDE1534F76F00162364 /* trampoline.S in Sources */,
-				6C43CBE61534F76F00162364 /* darwin.S in Sources */,
-				6C43CBE81534F76F00162364 /* ffi.c in Sources */,
-				6C43CBE91534F76F00162364 /* ffi64.c in Sources */,
-				6C43CC2F1534F7BE00162364 /* closures.c in Sources */,
-				6C43CC311534F7BE00162364 /* debug.c in Sources */,
-				6C43CC331534F7BE00162364 /* dlmalloc.c in Sources */,
-				6C43CC351534F7BE00162364 /* java_raw_api.c in Sources */,
-				6C43CC371534F7BE00162364 /* prep_cif.c in Sources */,
-				6C43CC391534F7BE00162364 /* raw_api.c in Sources */,
-				6C43CC3B1534F7BE00162364 /* types.c in Sources */,
+				B42D696557BDEE61F4A9C6E8 /* closure.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CFD49188E87D79E8FC9CEA23 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B4B3F54DD329063B8FE31338 /* test.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		16426B6E1C482E851A63B5C9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B21BD8438B9A6F1494F0FDA3 /* closure-test */;
+			targetProxy = 74EF93C32B8F40F838788801 /* PBXContainerItemProxy */;
+		};
+		74BB86335B7F1E8377F25CA4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E6901C5E0122FAED16CD52DF /* ffi */;
+			targetProxy = FDD97683CDE51EF886FB0F74 /* PBXContainerItemProxy */;
+		};
+		CD3720760DAB854D7438084A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E6901C5E0122FAED16CD52DF /* ffi */;
+			targetProxy = 5C4F82EB7EF6F28864E1B081 /* PBXContainerItemProxy */;
+		};
+		D1AC78443630497B5C15AECB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CFB4EC2C383CA84B120B9392 /* test */;
+			targetProxy = 1A95C9769A24738FCA279473 /* PBXContainerItemProxy */;
+		};
+		FAD9CE4D9D7A9E8B902371BE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E6901C5E0122FAED16CD52DF /* ffi */;
+			targetProxy = FF33E6D74AAAB69F4016C817 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
-		6C43CB4B1534E9D100162364 /* Debug */ = {
+		0ACA0F6492C050FBD0530CBE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				DSTROOT = /tmp/ffi.dst;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
-				);
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = ffi;
-				SDKROOT = macosx;
-			};
-			name = Debug;
-		};
-		6C43CB4C1534E9D100162364 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DSTROOT = /tmp/ffi.dst;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
-				);
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				PRODUCT_NAME = ffi;
-				SDKROOT = macosx;
+				PRODUCT_NAME = All;
 			};
 			name = Release;
 		};
-		F6B083AB14721EE50031D8A1 /* Debug */ = {
+		0F023A549EB89AEEBC7AF38D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INTERMEDIATE_DIR = "$(PROJECT_DERIVED_FILE_DIR)/$(CONFIGURATION)";
+				SDKROOT = macosx10.8;
+				SHARED_INTERMEDIATE_DIR = "$(SYMROOT)/DerivedSources/$(CONFIGURATION)";
+				SYMROOT = ../../../../xcodebuild;
+			};
+			name = Release;
+		};
+		1D818EA2E9F4E41E6C330E1D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				COPY_PHASE_STRIP = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				CC = "$(SOURCE_ROOT)/../../../../third_party/llvm-build/Release+Asserts/bin/clang";
+				CLANG_LINK_OBJC_RUNTIME = NO;
+				CLANG_WARN_CXX0X_EXTENSIONS = NO;
+				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
+				DEAD_CODE_STRIPPING = YES;
+				EXECUTABLE_PREFIX = "";
+				GCC_CW_ASM_SYNTAX = NO;
+				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_ENABLE_CPP_EXCEPTIONS = NO;
+				GCC_ENABLE_CPP_RTTI = NO;
+				GCC_ENABLE_PASCAL_STRINGS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
+				GCC_OBJC_CALL_CXX_CDTORS = YES;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
+					ANGLE_DX11,
+					CHROMIUM_BUILD,
+					"USE_LIBJPEG_TURBO=1",
+					ENABLE_ONE_CLICK_SIGNIN,
+					"ENABLE_REMOTING=1",
+					"ENABLE_WEBRTC=1",
+					USE_PROPRIETARY_CODECS,
+					ENABLE_PEPPER_CDMS,
+					ENABLE_CONFIGURATION_POLICY,
+					ENABLE_INPUT_SPEECH,
+					ENABLE_NOTIFICATIONS,
+					"ENABLE_HIDPI=1",
+					"ENABLE_GPU=1",
+					"ENABLE_EGLIMAGE=1",
+					"ENABLE_TASK_MANAGER=1",
+					"ENABLE_EXTENSIONS=1",
+					"ENABLE_PLUGIN_INSTALLATION=1",
+					"ENABLE_PLUGINS=1",
+					"ENABLE_SESSION_SERVICE=1",
+					"ENABLE_THEMES=1",
+					"ENABLE_AUTOFILL_DIALOG=1",
+					"ENABLE_BACKGROUND=1",
+					"ENABLE_AUTOMATION=1",
+					"ENABLE_GOOGLE_NOW=1",
+					"ENABLE_FULL_PRINTING=1",
+					"ENABLE_PRINTING=1",
+					"ENABLE_SPELLCHECK=1",
+					"ENABLE_CAPTIVE_PORTAL_DETECTION=1",
+					"ENABLE_APP_LIST=1",
+					"ENABLE_SETTINGS_APP=1",
+					"ENABLE_MANAGED_USERS=1",
+					NDEBUG,
+					NVALGRIND,
+					"DYNAMIC_ANNOTATIONS_ENABLED=0",
 				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VALUE = NO;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = ios/include;
-				SDKROOT = iphoneos;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_THREADSAFE_STATICS = NO;
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				HEADER_SEARCH_PATHS = (
+					include,
+					config/mac/ia32,
+				);
+				LDPLUSPLUS = "$(SOURCE_ROOT)/../../../../third_party/llvm-build/Release+Asserts/bin/clang++";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				OTHER_CFLAGS = (
+					"-Xclang",
+					"-load",
+					"-Xclang",
+					"/Tint/Runtime/src/tools/clang/scripts/../../../third_party/llvm-build/Release+Asserts/lib/libFindBadConstructs.dylib",
+					"-Xclang",
+					"-add-plugin",
+					"-Xclang",
+					"find-bad-constructs",
+					"-fno-strict-aliasing",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(inherited)",
+					"-std=gnu++11",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-pie",
+				);
+				PRODUCT_NAME = "closure-test";
+				SHARED_PRECOMPS_DIR = "$(CONFIGURATION_BUILD_DIR)/SharedPrecompiledHeaders";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wendif-labels",
+					"-Wno-unused-parameter",
+					"-Wno-missing-field-initializers",
+					"-Wheader-hygiene",
+					"-Wno-c++11-narrowing",
+					"-Wno-char-subscripts",
+					"-Wno-unused-function",
+					"-Wno-covered-switch-default",
+					"-Wstring-conversion",
+					"-Wno-deprecated-register",
+				);
+				WARNING_CFLAGS_excluded = (
+					"-Wall",
+					"-Wextra",
+				);
 			};
-			name = Debug;
+			name = Release;
 		};
-		F6B083AC14721EE50031D8A1 /* Release */ = {
+		53B123CE16CAED968B865664 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				COPY_PHASE_STRIP = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PREPROCESSOR_DEFINITIONS = "";
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VALUE = NO;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = ios/include;
-				SDKROOT = iphoneos;
-				VALIDATE_PRODUCT = YES;
+				CC = "$(SOURCE_ROOT)/../../../../third_party/llvm-build/Release+Asserts/bin/clang";
+				CLANG_LINK_OBJC_RUNTIME = NO;
+				CLANG_WARN_CXX0X_EXTENSIONS = NO;
+				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
+				DEAD_CODE_STRIPPING = YES;
+				EXECUTABLE_PREFIX = "";
+				GCC_CW_ASM_SYNTAX = NO;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_CPP_EXCEPTIONS = NO;
+				GCC_ENABLE_CPP_RTTI = NO;
+				GCC_ENABLE_PASCAL_STRINGS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
+				GCC_OBJC_CALL_CXX_CDTORS = YES;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					ANGLE_DX11,
+					CHROMIUM_BUILD,
+					"USE_LIBJPEG_TURBO=1",
+					ENABLE_ONE_CLICK_SIGNIN,
+					"ENABLE_REMOTING=1",
+					"ENABLE_WEBRTC=1",
+					USE_PROPRIETARY_CODECS,
+					ENABLE_PEPPER_CDMS,
+					ENABLE_CONFIGURATION_POLICY,
+					ENABLE_INPUT_SPEECH,
+					ENABLE_NOTIFICATIONS,
+					"ENABLE_HIDPI=1",
+					"ENABLE_GPU=1",
+					"ENABLE_EGLIMAGE=1",
+					"ENABLE_TASK_MANAGER=1",
+					"ENABLE_EXTENSIONS=1",
+					"ENABLE_PLUGIN_INSTALLATION=1",
+					"ENABLE_PLUGINS=1",
+					"ENABLE_SESSION_SERVICE=1",
+					"ENABLE_THEMES=1",
+					"ENABLE_AUTOFILL_DIALOG=1",
+					"ENABLE_BACKGROUND=1",
+					"ENABLE_AUTOMATION=1",
+					"ENABLE_GOOGLE_NOW=1",
+					"ENABLE_FULL_PRINTING=1",
+					"ENABLE_PRINTING=1",
+					"ENABLE_SPELLCHECK=1",
+					"ENABLE_CAPTIVE_PORTAL_DETECTION=1",
+					"ENABLE_APP_LIST=1",
+					"ENABLE_SETTINGS_APP=1",
+					"ENABLE_MANAGED_USERS=1",
+					NDEBUG,
+					NVALGRIND,
+					"DYNAMIC_ANNOTATIONS_ENABLED=0",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_THREADSAFE_STATICS = NO;
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				HEADER_SEARCH_PATHS = (
+					include,
+					config/mac/ia32,
+				);
+				LDPLUSPLUS = "$(SOURCE_ROOT)/../../../../third_party/llvm-build/Release+Asserts/bin/clang++";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				OTHER_CFLAGS = (
+					"-Xclang",
+					"-load",
+					"-Xclang",
+					"/Tint/Runtime/src/tools/clang/scripts/../../../third_party/llvm-build/Release+Asserts/lib/libFindBadConstructs.dylib",
+					"-Xclang",
+					"-add-plugin",
+					"-Xclang",
+					"find-bad-constructs",
+					"-fno-strict-aliasing",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(inherited)",
+					"-std=gnu++11",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-pie",
+				);
+				PRODUCT_NAME = test;
+				SHARED_PRECOMPS_DIR = "$(CONFIGURATION_BUILD_DIR)/SharedPrecompiledHeaders";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wendif-labels",
+					"-Wno-unused-parameter",
+					"-Wno-missing-field-initializers",
+					"-Wheader-hygiene",
+					"-Wno-c++11-narrowing",
+					"-Wno-char-subscripts",
+					"-Wno-unused-function",
+					"-Wno-covered-switch-default",
+					"-Wstring-conversion",
+					"-Wno-deprecated-register",
+				);
+				WARNING_CFLAGS_excluded = (
+					"-Wall",
+					"-Wextra",
+				);
 			};
 			name = Release;
 		};
-		F6F980C2147386130008F121 /* Debug */ = {
+		6F344DB0D6FC9E8B624DB6AF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv6,
-					armv7,
-				);
-				DSTROOT = /tmp/ffi.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_THUMB_SUPPORT = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = ffi;
-				SKIP_INSTALL = YES;
+				PRODUCT_NAME = All;
 			};
 			name = Debug;
 		};
-		F6F980C3147386130008F121 /* Release */ = {
+		71C299B9EFB44F49EDB5317B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv6,
-					armv7,
-				);
-				DSTROOT = /tmp/ffi.dst;
+				INTERMEDIATE_DIR = "$(PROJECT_DERIVED_FILE_DIR)/$(CONFIGURATION)";
+				SDKROOT = macosx10.8;
+				SHARED_INTERMEDIATE_DIR = "$(SYMROOT)/DerivedSources/$(CONFIGURATION)";
+				SYMROOT = ../../../../xcodebuild;
+			};
+			name = Debug;
+		};
+		89A5F9E95F1C1119A53FDBB1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CC = "$(SOURCE_ROOT)/../../../../third_party/llvm-build/Release+Asserts/bin/clang";
+				CLANG_LINK_OBJC_RUNTIME = NO;
+				CLANG_WARN_CXX0X_EXTENSIONS = NO;
+				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
+				COPY_PHASE_STRIP = NO;
+				EXECUTABLE_PREFIX = "";
+				GCC_CW_ASM_SYNTAX = NO;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_CPP_EXCEPTIONS = NO;
+				GCC_ENABLE_CPP_RTTI = NO;
+				GCC_ENABLE_PASCAL_STRINGS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
+				GCC_OBJC_CALL_CXX_CDTORS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_THUMB_SUPPORT = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
-				OTHER_LDFLAGS = "-ObjC";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					ANGLE_DX11,
+					CHROMIUM_BUILD,
+					"USE_LIBJPEG_TURBO=1",
+					ENABLE_ONE_CLICK_SIGNIN,
+					"ENABLE_REMOTING=1",
+					"ENABLE_WEBRTC=1",
+					USE_PROPRIETARY_CODECS,
+					ENABLE_PEPPER_CDMS,
+					ENABLE_CONFIGURATION_POLICY,
+					ENABLE_INPUT_SPEECH,
+					ENABLE_NOTIFICATIONS,
+					"ENABLE_HIDPI=1",
+					"ENABLE_GPU=1",
+					"ENABLE_EGLIMAGE=1",
+					"ENABLE_TASK_MANAGER=1",
+					"ENABLE_EXTENSIONS=1",
+					"ENABLE_PLUGIN_INSTALLATION=1",
+					"ENABLE_PLUGINS=1",
+					"ENABLE_SESSION_SERVICE=1",
+					"ENABLE_THEMES=1",
+					"ENABLE_AUTOFILL_DIALOG=1",
+					"ENABLE_BACKGROUND=1",
+					"ENABLE_AUTOMATION=1",
+					"ENABLE_GOOGLE_NOW=1",
+					"ENABLE_FULL_PRINTING=1",
+					"ENABLE_PRINTING=1",
+					"ENABLE_SPELLCHECK=1",
+					"ENABLE_CAPTIVE_PORTAL_DETECTION=1",
+					"ENABLE_APP_LIST=1",
+					"ENABLE_SETTINGS_APP=1",
+					"ENABLE_MANAGED_USERS=1",
+					"DYNAMIC_ANNOTATIONS_ENABLED=1",
+					"WTF_USE_DYNAMIC_ANNOTATIONS=1",
+					DEBUG,
+					_DEBUG,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_THREADSAFE_STATICS = NO;
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				HEADER_SEARCH_PATHS = (
+					include,
+					config/mac/ia32,
+				);
+				LDPLUSPLUS = "$(SOURCE_ROOT)/../../../../third_party/llvm-build/Release+Asserts/bin/clang++";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				OTHER_CFLAGS = (
+					"-Xclang",
+					"-load",
+					"-Xclang",
+					"/Tint/Runtime/src/tools/clang/scripts/../../../third_party/llvm-build/Release+Asserts/lib/libFindBadConstructs.dylib",
+					"-Xclang",
+					"-add-plugin",
+					"-Xclang",
+					"find-bad-constructs",
+					"-fno-strict-aliasing",
+					"-fstack-protector-all",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(inherited)",
+					"-std=gnu++11",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-pie",
+				);
+				PRODUCT_NAME = test;
+				SHARED_PRECOMPS_DIR = "$(CONFIGURATION_BUILD_DIR)/SharedPrecompiledHeaders";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wendif-labels",
+					"-Wno-unused-parameter",
+					"-Wno-missing-field-initializers",
+					"-Wheader-hygiene",
+					"-Wno-c++11-narrowing",
+					"-Wno-char-subscripts",
+					"-Wno-unused-function",
+					"-Wno-covered-switch-default",
+					"-Wstring-conversion",
+					"-Wno-deprecated-register",
+				);
+				WARNING_CFLAGS_excluded = (
+					"-Wall",
+					"-Wextra",
+				);
+			};
+			name = Debug;
+		};
+		C966134616BBF6506848A150 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CC = "$(SOURCE_ROOT)/../../../../third_party/llvm-build/Release+Asserts/bin/clang";
+				CLANG_LINK_OBJC_RUNTIME = NO;
+				CLANG_WARN_CXX0X_EXTENSIONS = NO;
+				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
+				DEAD_CODE_STRIPPING = YES;
+				EXECUTABLE_PREFIX = lib;
+				GCC_CW_ASM_SYNTAX = NO;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_CPP_EXCEPTIONS = NO;
+				GCC_ENABLE_CPP_RTTI = NO;
+				GCC_ENABLE_PASCAL_STRINGS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
+				GCC_OBJC_CALL_CXX_CDTORS = YES;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					ANGLE_DX11,
+					CHROMIUM_BUILD,
+					"USE_LIBJPEG_TURBO=1",
+					ENABLE_ONE_CLICK_SIGNIN,
+					"ENABLE_REMOTING=1",
+					"ENABLE_WEBRTC=1",
+					USE_PROPRIETARY_CODECS,
+					ENABLE_PEPPER_CDMS,
+					ENABLE_CONFIGURATION_POLICY,
+					ENABLE_INPUT_SPEECH,
+					ENABLE_NOTIFICATIONS,
+					"ENABLE_HIDPI=1",
+					"ENABLE_GPU=1",
+					"ENABLE_EGLIMAGE=1",
+					"ENABLE_TASK_MANAGER=1",
+					"ENABLE_EXTENSIONS=1",
+					"ENABLE_PLUGIN_INSTALLATION=1",
+					"ENABLE_PLUGINS=1",
+					"ENABLE_SESSION_SERVICE=1",
+					"ENABLE_THEMES=1",
+					"ENABLE_AUTOFILL_DIALOG=1",
+					"ENABLE_BACKGROUND=1",
+					"ENABLE_AUTOMATION=1",
+					"ENABLE_GOOGLE_NOW=1",
+					"ENABLE_FULL_PRINTING=1",
+					"ENABLE_PRINTING=1",
+					"ENABLE_SPELLCHECK=1",
+					"ENABLE_CAPTIVE_PORTAL_DETECTION=1",
+					"ENABLE_APP_LIST=1",
+					"ENABLE_SETTINGS_APP=1",
+					"ENABLE_MANAGED_USERS=1",
+					PIC,
+					FFI_BUILDING,
+					HAVE_CONFIG_H,
+					NDEBUG,
+					NVALGRIND,
+					"DYNAMIC_ANNOTATIONS_ENABLED=0",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_THREADSAFE_STATICS = NO;
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				HEADER_SEARCH_PATHS = (
+					include,
+					config/mac/ia32,
+				);
+				LDPLUSPLUS = "$(SOURCE_ROOT)/../../../../third_party/llvm-build/Release+Asserts/bin/clang++";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				OTHER_CFLAGS = (
+					"-Xclang",
+					"-load",
+					"-Xclang",
+					"/Tint/Runtime/src/tools/clang/scripts/../../../third_party/llvm-build/Release+Asserts/lib/libFindBadConstructs.dylib",
+					"-Xclang",
+					"-add-plugin",
+					"-Xclang",
+					"find-bad-constructs",
+					"-fno-strict-aliasing",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(inherited)",
+					"-std=gnu++11",
+				);
 				PRODUCT_NAME = ffi;
-				SKIP_INSTALL = YES;
+				SHARED_PRECOMPS_DIR = "$(CONFIGURATION_BUILD_DIR)/SharedPrecompiledHeaders";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wendif-labels",
+					"-Wno-unused-parameter",
+					"-Wno-missing-field-initializers",
+					"-Wheader-hygiene",
+					"-Wno-c++11-narrowing",
+					"-Wno-char-subscripts",
+					"-Wno-unused-function",
+					"-Wno-covered-switch-default",
+					"-Wstring-conversion",
+					"-Wno-deprecated-register",
+				);
+				WARNING_CFLAGS_excluded = (
+					"-Wall",
+					"-Wextra",
+				);
 			};
 			name = Release;
+		};
+		EF332530FC9208AD460B414A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CC = "$(SOURCE_ROOT)/../../../../third_party/llvm-build/Release+Asserts/bin/clang";
+				CLANG_LINK_OBJC_RUNTIME = NO;
+				CLANG_WARN_CXX0X_EXTENSIONS = NO;
+				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
+				COPY_PHASE_STRIP = NO;
+				EXECUTABLE_PREFIX = lib;
+				GCC_CW_ASM_SYNTAX = NO;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_CPP_EXCEPTIONS = NO;
+				GCC_ENABLE_CPP_RTTI = NO;
+				GCC_ENABLE_PASCAL_STRINGS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
+				GCC_OBJC_CALL_CXX_CDTORS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					ANGLE_DX11,
+					CHROMIUM_BUILD,
+					"USE_LIBJPEG_TURBO=1",
+					ENABLE_ONE_CLICK_SIGNIN,
+					"ENABLE_REMOTING=1",
+					"ENABLE_WEBRTC=1",
+					USE_PROPRIETARY_CODECS,
+					ENABLE_PEPPER_CDMS,
+					ENABLE_CONFIGURATION_POLICY,
+					ENABLE_INPUT_SPEECH,
+					ENABLE_NOTIFICATIONS,
+					"ENABLE_HIDPI=1",
+					"ENABLE_GPU=1",
+					"ENABLE_EGLIMAGE=1",
+					"ENABLE_TASK_MANAGER=1",
+					"ENABLE_EXTENSIONS=1",
+					"ENABLE_PLUGIN_INSTALLATION=1",
+					"ENABLE_PLUGINS=1",
+					"ENABLE_SESSION_SERVICE=1",
+					"ENABLE_THEMES=1",
+					"ENABLE_AUTOFILL_DIALOG=1",
+					"ENABLE_BACKGROUND=1",
+					"ENABLE_AUTOMATION=1",
+					"ENABLE_GOOGLE_NOW=1",
+					"ENABLE_FULL_PRINTING=1",
+					"ENABLE_PRINTING=1",
+					"ENABLE_SPELLCHECK=1",
+					"ENABLE_CAPTIVE_PORTAL_DETECTION=1",
+					"ENABLE_APP_LIST=1",
+					"ENABLE_SETTINGS_APP=1",
+					"ENABLE_MANAGED_USERS=1",
+					PIC,
+					FFI_BUILDING,
+					HAVE_CONFIG_H,
+					"DYNAMIC_ANNOTATIONS_ENABLED=1",
+					"WTF_USE_DYNAMIC_ANNOTATIONS=1",
+					DEBUG,
+					_DEBUG,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_THREADSAFE_STATICS = NO;
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				HEADER_SEARCH_PATHS = (
+					include,
+					config/mac/ia32,
+				);
+				LDPLUSPLUS = "$(SOURCE_ROOT)/../../../../third_party/llvm-build/Release+Asserts/bin/clang++";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				OTHER_CFLAGS = (
+					"-Xclang",
+					"-load",
+					"-Xclang",
+					"/Tint/Runtime/src/tools/clang/scripts/../../../third_party/llvm-build/Release+Asserts/lib/libFindBadConstructs.dylib",
+					"-Xclang",
+					"-add-plugin",
+					"-Xclang",
+					"find-bad-constructs",
+					"-fno-strict-aliasing",
+					"-fstack-protector-all",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(inherited)",
+					"-std=gnu++11",
+				);
+				PRODUCT_NAME = ffi;
+				SHARED_PRECOMPS_DIR = "$(CONFIGURATION_BUILD_DIR)/SharedPrecompiledHeaders";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wendif-labels",
+					"-Wno-unused-parameter",
+					"-Wno-missing-field-initializers",
+					"-Wheader-hygiene",
+					"-Wno-c++11-narrowing",
+					"-Wno-char-subscripts",
+					"-Wno-unused-function",
+					"-Wno-covered-switch-default",
+					"-Wstring-conversion",
+					"-Wno-deprecated-register",
+				);
+				WARNING_CFLAGS_excluded = (
+					"-Wall",
+					"-Wextra",
+				);
+			};
+			name = Debug;
+		};
+		FE86616AAEB94E807ABDB55D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CC = "$(SOURCE_ROOT)/../../../../third_party/llvm-build/Release+Asserts/bin/clang";
+				CLANG_LINK_OBJC_RUNTIME = NO;
+				CLANG_WARN_CXX0X_EXTENSIONS = NO;
+				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
+				COPY_PHASE_STRIP = NO;
+				EXECUTABLE_PREFIX = "";
+				GCC_CW_ASM_SYNTAX = NO;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_CPP_EXCEPTIONS = NO;
+				GCC_ENABLE_CPP_RTTI = NO;
+				GCC_ENABLE_PASCAL_STRINGS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
+				GCC_OBJC_CALL_CXX_CDTORS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					ANGLE_DX11,
+					CHROMIUM_BUILD,
+					"USE_LIBJPEG_TURBO=1",
+					ENABLE_ONE_CLICK_SIGNIN,
+					"ENABLE_REMOTING=1",
+					"ENABLE_WEBRTC=1",
+					USE_PROPRIETARY_CODECS,
+					ENABLE_PEPPER_CDMS,
+					ENABLE_CONFIGURATION_POLICY,
+					ENABLE_INPUT_SPEECH,
+					ENABLE_NOTIFICATIONS,
+					"ENABLE_HIDPI=1",
+					"ENABLE_GPU=1",
+					"ENABLE_EGLIMAGE=1",
+					"ENABLE_TASK_MANAGER=1",
+					"ENABLE_EXTENSIONS=1",
+					"ENABLE_PLUGIN_INSTALLATION=1",
+					"ENABLE_PLUGINS=1",
+					"ENABLE_SESSION_SERVICE=1",
+					"ENABLE_THEMES=1",
+					"ENABLE_AUTOFILL_DIALOG=1",
+					"ENABLE_BACKGROUND=1",
+					"ENABLE_AUTOMATION=1",
+					"ENABLE_GOOGLE_NOW=1",
+					"ENABLE_FULL_PRINTING=1",
+					"ENABLE_PRINTING=1",
+					"ENABLE_SPELLCHECK=1",
+					"ENABLE_CAPTIVE_PORTAL_DETECTION=1",
+					"ENABLE_APP_LIST=1",
+					"ENABLE_SETTINGS_APP=1",
+					"ENABLE_MANAGED_USERS=1",
+					"DYNAMIC_ANNOTATIONS_ENABLED=1",
+					"WTF_USE_DYNAMIC_ANNOTATIONS=1",
+					DEBUG,
+					_DEBUG,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_THREADSAFE_STATICS = NO;
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				HEADER_SEARCH_PATHS = (
+					include,
+					config/mac/ia32,
+				);
+				LDPLUSPLUS = "$(SOURCE_ROOT)/../../../../third_party/llvm-build/Release+Asserts/bin/clang++";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				OTHER_CFLAGS = (
+					"-Xclang",
+					"-load",
+					"-Xclang",
+					"/Tint/Runtime/src/tools/clang/scripts/../../../third_party/llvm-build/Release+Asserts/lib/libFindBadConstructs.dylib",
+					"-Xclang",
+					"-add-plugin",
+					"-Xclang",
+					"find-bad-constructs",
+					"-fno-strict-aliasing",
+					"-fstack-protector-all",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(inherited)",
+					"-std=gnu++11",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-pie",
+				);
+				PRODUCT_NAME = "closure-test";
+				SHARED_PRECOMPS_DIR = "$(CONFIGURATION_BUILD_DIR)/SharedPrecompiledHeaders";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wendif-labels",
+					"-Wno-unused-parameter",
+					"-Wno-missing-field-initializers",
+					"-Wheader-hygiene",
+					"-Wno-c++11-narrowing",
+					"-Wno-char-subscripts",
+					"-Wno-unused-function",
+					"-Wno-covered-switch-default",
+					"-Wstring-conversion",
+					"-Wno-deprecated-register",
+				);
+				WARNING_CFLAGS_excluded = (
+					"-Wall",
+					"-Wextra",
+				);
+			};
+			name = Debug;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6C43CB4A1534E9D100162364 /* Build configuration list for PBXNativeTarget "libffi OS X" */ = {
+		3F201194C1F59D42B3C6746B /* Build configuration list for PBXProject "libffi" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6C43CB4B1534E9D100162364 /* Debug */,
-				6C43CB4C1534E9D100162364 /* Release */,
+				71C299B9EFB44F49EDB5317B /* Debug */,
+				0F023A549EB89AEEBC7AF38D /* Release */,
 			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationIsVisible = 1;
+			defaultConfigurationName = Debug;
 		};
-		F6B0839A14721EE50031D8A1 /* Build configuration list for PBXProject "libffi" */ = {
+		5F76F8E2DEC3A987C1A10A9A /* Build configuration list for PBXNativeTarget "test" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F6B083AB14721EE50031D8A1 /* Debug */,
-				F6B083AC14721EE50031D8A1 /* Release */,
+				89A5F9E95F1C1119A53FDBB1 /* Debug */,
+				53B123CE16CAED968B865664 /* Release */,
 			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationIsVisible = 1;
+			defaultConfigurationName = Debug;
 		};
-		F6F980C4147386130008F121 /* Build configuration list for PBXNativeTarget "libffi iOS" */ = {
+		6E3D9CD2CF6F910CD1E53A8E /* Build configuration list for PBXAggregateTarget "All" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F6F980C2147386130008F121 /* Debug */,
-				F6F980C3147386130008F121 /* Release */,
+				6F344DB0D6FC9E8B624DB6AF /* Debug */,
+				0ACA0F6492C050FBD0530CBE /* Release */,
 			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationIsVisible = 1;
+			defaultConfigurationName = Debug;
+		};
+		E128CF9B151AF11237407B33 /* Build configuration list for PBXNativeTarget "ffi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF332530FC9208AD460B414A /* Debug */,
+				C966134616BBF6506848A150 /* Release */,
+			);
+			defaultConfigurationIsVisible = 1;
+			defaultConfigurationName = Debug;
+		};
+		EDF69BD194C2CCEF533B6F7E /* Build configuration list for PBXNativeTarget "closure-test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE86616AAEB94E807ABDB55D /* Debug */,
+				1D818EA2E9F4E41E6C330E1D /* Release */,
+			);
+			defaultConfigurationIsVisible = 1;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = F6B0839714721EE50031D8A1 /* Project object */;
+	rootObject = 4BCF9E06C6DB1D30B53424DC /* Project object */;
 }

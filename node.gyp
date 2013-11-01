@@ -71,16 +71,12 @@
 
       'dependencies': [
         'node_js2c#host',
-		'deps/libffi/libffi.gyp:ffi',
-		'deps/pthreads-win32/pthread.gyp:pthread',
-		'deps/dlfcn-win32/dlfcn.gyp:dlfcn',
+        'deps/libffi/libffi.gyp:ffi',
       ],
 
       'include_dirs': [
         '../..',
         'src',
-		'deps/dlfcn-win32/',
-		'deps/pthreads-win32/',
         'tools/msvs/genfiles',
         'deps/uv/src/ares',
         '<(SHARED_INTERMEDIATE_DIR)' # for node_natives.h
@@ -275,12 +271,21 @@
             'PLATFORM="win32"',
             '_UNICODE=1',
           ],
+          'dependencies':[ 
+            'deps/pthreads-win32/pthread.gyp:pthread',
+            'deps/dlfcn-win32/dlfcn.gyp:dlfcn',
+          ],
+	  'include_dirs':[
+	    'deps/pthreads-win32/',
+	    'deps/dlfcn-win32/',
+	  ],
           'libraries': [ '-lpsapi.lib', '-llibffi.lib', '-lpthread' ]
         }, { # POSIX
           'defines': [ '__POSIX__' ],
         }],
         [ 'OS=="mac"', {
-          'libraries': [ '-framework Carbon' ],
+          'libraries': [ '-framework Carbon', '-llibffi' ],
+          'include_dirs': [ 'deps/libffi/config/mac/x64' ],
           'defines!': [
             'PLATFORM="mac"',
           ],

@@ -98,8 +98,12 @@ extern char **environ;
 #include <stdint.h>
 #include <queue>
 
+#ifdef OS_WIN
 #include "dlfcn.h"
 #include "pthread.h"
+#else
+#include <dlfcn.h>
+#endif
 
 /* define FFI_BUILDING before including ffi.h to workaround a libffi bug on Windows */
 #define FFI_BUILDING
