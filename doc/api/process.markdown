@@ -60,10 +60,10 @@ You have been warned.
 ## Signal Events
 
 <!--type=event-->
-<!--name=SIGINT, SIGUSR1, etc.-->
+<!--name=SIGINT, SIGHUP, etc.-->
 
 Emitted when the processes receives a signal. See sigaction(2) for a list of
-standard POSIX signal names such as SIGINT, SIGUSR1, etc.
+standard POSIX signal names such as SIGINT, SIGHUP, etc.
 
 Example of listening for `SIGINT`:
 
@@ -77,6 +77,33 @@ Example of listening for `SIGINT`:
 An easy way to send the `SIGINT` signal is with `Control-C` in most terminal
 programs.
 
+Note:
+
+- `SIGUSR1` is reserved by node.js to start the debugger.  It's possible to
+  install a listener but that won't stop the debugger from starting.
+- `SIGTERM` and `SIGINT` have default handlers on non-Windows platforms that resets
+  the terminal mode before exiting with code `128 + signal number`. If one of
+  these signals has a listener installed, its default behaviour will be removed
+  (node will no longer exit).
+- `SIGPIPE` is ignored by default, it can have a listener installed.
+- `SIGHUP` is generated on Windows when the console window is closed, and on other
+  platforms under various similar conditions, see signal(7). It can have a
+  listener installed, however node will be unconditionally terminated by Windows
+  about 10 seconds later. On non-Windows platforms, the default behaviour of
+  `SIGHUP` is to terminate node, but once a listener has been installed its
+  default behaviour will be removed.
+- `SIGTERM` is not supported on Windows, it can be listened on.
+- `SIGINT` is supported on all platforms, and can usually be generated with
+  `CTRL+C` (though this may be configurable). It is not generated when terminal
+  raw mode is enabled.
+- `SIGBREAK` is delivered on Windows when `CTRL+BREAK` is pressed, on non-Windows
+  platforms it can be listened on, but there is no way to send or generate it.
+- `SIGWINCH` is delivered when the console has been resized. On Windows, this will
+  only happen on write to the console when the cursor is being moved, or when a
+  readable tty is used in raw mode.
+- `SIGKILL` cannot have a listener installed, it will unconditionally terminate
+  node on all platforms.
+- `SIGSTOP` cannot have a listener installed.
 
 ## process.stdout
 
@@ -391,7 +418,7 @@ An example of the possible output looks like:
 
 Send a signal to a process. `pid` is the process id and `signal` is the
 string describing the signal to send.  Signal names are strings like
-'SIGINT' or 'SIGUSR1'.  If omitted, the signal will be 'SIGTERM'.
+'SIGINT' or 'SIGHUP'.  If omitted, the signal will be 'SIGTERM'.
 See kill(2) for more information.
 
 Note that just because the name of this function is `process.kill`, it is
@@ -411,6 +438,8 @@ Example of sending a signal to yourself:
 
     process.kill(process.pid, 'SIGHUP');
 
+Note: SIGUSR1 is reserved by node.js.  It can be used to kickstart the
+debugger.
 
 ## process.pid
 
