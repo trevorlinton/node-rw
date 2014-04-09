@@ -438,7 +438,8 @@
               '$(SDKROOT)/System/Library/Frameworks/AudioToolbox.framework',
               '$(SDKROOT)/System/Library/Frameworks/CoreAudio.framework',
               '$(SDKROOT)/System/Library/Frameworks/CoreVideo.framework',
-              '$(SDKROOT)/System/Library/Frameworks/QTKit.framework',
+              	# no longer supported in the apple store for mavericks
+		#'$(SDKROOT)/System/Library/Frameworks/QTKit.framework',
             ],
           },
         }],

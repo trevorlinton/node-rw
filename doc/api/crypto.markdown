@@ -293,8 +293,15 @@ with new data as it is streamed.
 ### sign.sign(private_key, [output_format])
 
 Calculates the signature on all the updated data passed through the
-sign.  `private_key` is a string containing the PEM encoded private
-key for signing.
+sign.
+
+`private_key` can be an object or a string. If `private_key` is a string, it is
+treated as the key with no passphrase.
+
+`private_key`:
+
+* `key` : A string holding the PEM encoded private key
+* `passphrase` : A string of passphrase for the private key
 
 Returns the signature in `output_format` which can be `'binary'`,
 `'hex'` or `'base64'`. If no encoding is provided, then a buffer is
@@ -465,7 +472,13 @@ Generates cryptographically strong pseudo-random data. Usage:
       console.log('Have %d bytes of random data: %s', buf.length, buf);
     } catch (ex) {
       // handle error
+      // most likely, entropy sources are drained
     }
+
+NOTE: Will throw error or invoke callback with error, if there is not enough
+accumulated entropy to generate cryptographically strong data. In other words,
+`crypto.randomBytes` without callback will not block even if all entropy sources
+are drained.
 
 ## crypto.pseudoRandomBytes(size, [callback])
 
@@ -476,6 +489,26 @@ function should never be used where unpredictability is important,
 such as in the generation of encryption keys.
 
 Usage is otherwise identical to `crypto.randomBytes`.
+
+## Class: Certificate
+
+The class used for working with signed public key & challenges. The most
+common usage for this series of functions is when dealing with the `<keygen>`
+element. http://www.openssl.org/docs/apps/spkac.html
+
+Returned by `crypto.Certificate`.
+
+### Certificate.verifySpkac(spkac)
+
+Returns true of false based on the validity of the SPKAC.
+
+### Certificate.exportChallenge(spkac)
+
+Exports the encoded public key from the supplied SPKAC.
+
+### Certificate.exportPublicKey(spkac)
+
+Exports the encoded challenge associated with the SPKAC.
 
 ## crypto.DEFAULT_ENCODING
 

@@ -61,13 +61,14 @@ consts_misc = [
 
     { 'name': 'StringEncodingMask',     'value': 'kStringEncodingMask' },
     { 'name': 'TwoByteStringTag',       'value': 'kTwoByteStringTag' },
-    { 'name': 'AsciiStringTag',         'value': 'kAsciiStringTag' },
+    { 'name': 'AsciiStringTag',         'value': 'kOneByteStringTag' },
 
     { 'name': 'StringRepresentationMask',
         'value': 'kStringRepresentationMask' },
     { 'name': 'SeqStringTag',           'value': 'kSeqStringTag' },
     { 'name': 'ConsStringTag',          'value': 'kConsStringTag' },
     { 'name': 'ExternalStringTag',      'value': 'kExternalStringTag' },
+    { 'name': 'SlicedStringTag',        'value': 'kSlicedStringTag' },
 
     { 'name': 'FailureTag',             'value': 'kFailureTag' },
     { 'name': 'FailureTagMask',         'value': 'kFailureTagMask' },
@@ -79,6 +80,15 @@ consts_misc = [
     { 'name': 'SmiShiftSize',           'value': 'kSmiShiftSize' },
     { 'name': 'PointerSizeLog2',        'value': 'kPointerSizeLog2' },
 
+    { 'name': 'prop_idx_first',
+        'value': 'DescriptorArray::kFirstIndex' },
+    { 'name': 'prop_type_field',
+        'value': 'FIELD' },
+    { 'name': 'prop_type_first_phantom',
+        'value': 'TRANSITION' },
+    { 'name': 'prop_type_mask',
+        'value': 'PropertyDetails::TypeField::kMask' },
+
     { 'name': 'prop_desc_key',
         'value': 'DescriptorArray::kDescriptorKey' },
     { 'name': 'prop_desc_details',
@@ -87,14 +97,6 @@ consts_misc = [
         'value': 'DescriptorArray::kDescriptorValue' },
     { 'name': 'prop_desc_size',
         'value': 'DescriptorArray::kDescriptorSize' },
-    { 'name': 'prop_idx_first',
-        'value': 'DescriptorArray::kFirstIndex' },
-    { 'name': 'prop_type_field',
-        'value': 'FIELD' },
-    { 'name': 'prop_type_first_phantom',
-        'value': 'Code::MAP_TRANSITION' },
-    { 'name': 'prop_type_mask',
-        'value': 'PropertyDetails::TypeField::kMask' },
 
     { 'name': 'off_fp_context',
         'value': 'StandardFrameConstants::kContextOffset' },
@@ -114,15 +116,16 @@ extras_accessors = [
     'JSObject, elements, Object, kElementsOffset',
     'FixedArray, data, uintptr_t, kHeaderSize',
     'Map, instance_attributes, int, kInstanceAttributesOffset',
-    'Map, transitions, uintptr_t, kTransitionsOrBackPointerOffset',
     'Map, inobject_properties, int, kInObjectPropertiesOffset',
     'Map, instance_size, int, kInstanceSizeOffset',
     'HeapNumber, value, double, kValueOffset',
     'ConsString, first, String, kFirstOffset',
     'ConsString, second, String, kSecondOffset',
     'ExternalString, resource, Object, kResourceOffset',
-    'SeqAsciiString, chars, char, kHeaderSize',
+    'SeqOneByteString, chars, char, kHeaderSize',
+    'SeqTwoByteString, chars, char, kHeaderSize',
     'SharedFunctionInfo, code, Code, kCodeOffset',
+    'SlicedString, parent, String, kParentOffset',
     'Code, instruction_start, uintptr_t, kHeaderSize',
     'Code, instruction_size, int, kInstructionSizeOffset',
 ];
@@ -135,7 +138,7 @@ extras_accessors = [
 expected_classes = [
     'ConsString', 'FixedArray', 'HeapNumber', 'JSArray', 'JSFunction',
     'JSObject', 'JSRegExp', 'JSValue', 'Map', 'Oddball', 'Script',
-    'SeqAsciiString', 'SharedFunctionInfo'
+    'SeqOneByteString', 'SharedFunctionInfo'
 ];
 
 
@@ -300,7 +303,7 @@ def load_objects():
                             cctype.find('Sliced') == -1):
                                 if (cctype.find('Ascii') != -1):
                                         cctype = re.sub('AsciiString$',
-                                            'SeqAsciiString', cctype);
+                                            'SeqOneByteString', cctype);
                                 else:
                                         cctype = re.sub('String$',
                                             'SeqString', cctype);
